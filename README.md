@@ -1,2 +1,2 @@
 # ReCarNation
-ITP Preojekt ReCarNation
+IT Projekt ReCarNation
