@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login & Registrierung</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="tabs">
+      <div class="tab active" onclick="switchTab('login')">Login</div>
+      <div class="tab" onclick="switchTab('register')">Registrieren</div>
+    </div>
+
+    <form id="login" class="active">
+      <input type="email" placeholder="E-Mail" required>
+      <input type="password" placeholder="Passwort" required>
+      <button type="submit">Einloggen</button>
+    </form>
+
+    <form id="register">
+      <input type="text" placeholder="Benutzername" required>
+      <input type="email" placeholder="E-Mail" required>
+      <input type="password" placeholder="Passwort" required>
+      <button type="submit">Registrieren</button>
+    </form>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
