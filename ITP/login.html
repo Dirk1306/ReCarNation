@@ -19,12 +19,13 @@
       <button type="submit">Einloggen</button>
     </form>
 
-    <form id="register">
-      <input type="text" placeholder="Benutzername" required>
-      <input type="email" placeholder="E-Mail" required>
-      <input type="password" placeholder="Passwort" required>
+    <form id="register" method="POST" action="register.php">
+      <input type="text" name="username" placeholder="Benutzername" required>
+      <input type="email" name="email" placeholder="E-Mail" required>
+      <input type="password" name="password" placeholder="Passwort" required>
       <button type="submit">Registrieren</button>
     </form>
+    
   </div>
 
   <script src="js/script.js"></script>
