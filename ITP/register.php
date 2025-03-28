@@ -15,7 +15,7 @@ try {
         $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
 
         // Checkt auf doppelte E-Mail
-        $check = $pdo->prepare("SELECT * FROM users WHERE email = ?");
+        $check = $pdo->prepare("SELECT * FROM user WHERE email = ?");
         $check->execute([$email]);
         if ($check->rowCount() > 0) {
             echo "Diese E-Mail ist bereits registriert.";
@@ -23,7 +23,7 @@ try {
         }
 
         // Neuer Benutzers
-        $stmt = $pdo->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
+        $stmt = $pdo->prepare("INSERT INTO user (username, email, password) VALUES (?, ?, ?)");
         $stmt->execute([$username, $email, $password]);
 
         echo "Registrierung erfolgreich!";
