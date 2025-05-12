@@ -20,6 +20,8 @@ session_start();
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link" href="home.php">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="carsite.php">Autos</a></li>
+                <li class="nav-item"><a class="nav-link" href="impressum.php">Impressum</a></li>
                 <?php 
                     if (!isset($_SESSION['username'])) {
                         echo ('<li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>');  
