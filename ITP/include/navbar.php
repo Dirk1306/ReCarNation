@@ -26,11 +26,9 @@ session_start();
                     if (!isset($_SESSION['username'])) {
                         echo ('<li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>');  
                     }else{       
-                        if($_SESSION['user']['role'] === 'admin'){
-                            echo ('<li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>');
-                        }else{
-                            echo ('<li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>');              
-                        }
+                        echo ('<li class="nav-item"><a class="nav-link" href="watchlist.php">Merkliste</a></li>');
+                        echo ('<li class="nav-item"><a class="nav-link" href="profile.php">Profil</a></li>');
+                        echo ('<li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>');
                     }
                     ?>
             </ul>
