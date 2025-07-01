@@ -41,7 +41,10 @@ if (!autoId) {
                             <p><strong>Baujahr:</strong> ${autos[autoIndex].year_of_construction}</p>
                             <p><strong>Preis:</strong> ${Number(autos[autoIndex].Price).toLocaleString('de-DE')} €</p>
                             <p><strong>Details:</strong><br>${autos[autoIndex].Information}</p>
-                            <a href="home.php" class="btn btn-secondary mt-3">Zurück</a>
+                            <a href="carsite.php" class="btn btn-secondary mt-3">Zurück</a>
+                            <a href="mailto:info@deinservice.de?subject=Anfrage%20zum%20Auto" class="btn btn-primary mt-3 ms-2">
+                                Kontakt per E-Mail
+                            </a>
                         </div>
                     </div>
                 `;

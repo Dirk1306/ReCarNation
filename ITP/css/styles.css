@@ -131,3 +131,75 @@ h1 {
     color: black;
     text-align: center;
 }
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: #f0f2f5;
+  color: #333;
+}
+
+
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 28px;
+  color: #222;
+}
+
+label {
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+input:focus, textarea:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.container button {
+  margin-top: 30px;
+  padding: 15px;
+  width: 100%;
+  background: black;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: darkgrey;
+}
+
+@media (max-width: 768px) {
+  .container {
+    margin: 30px 15px;
+    padding: 25px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+}
+
+

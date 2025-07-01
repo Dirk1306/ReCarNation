@@ -1,5 +1,13 @@
 const container = document.getElementById("auto-container");
 
+let userId;
+fetch('get_user.php')
+  .then(res => res.json())
+  .then(data => {
+    userId = data.user_id;
+    console.log("User-ID aus Session:", userId);
+  });
+
 fetch('get_autos.php')
     .then(res => res.json())
     .then(autos => {
@@ -16,9 +24,26 @@ fetch('get_autos.php')
                     </div>
                     <div class="card-footer">
                         <strong>Preis: ${auto.Price.toLocaleString('de-DE')} €</strong>
+                        <button class="btn btn-outline-danger btn-sm favorite-btn" data-id="${auto.Car_id}">
+                            ♥
+                        </button>
                     </div>
                 </div>
             `;
+
+            const favoriteBtn = card.querySelector('.favorite-btn');
+            favoriteBtn.addEventListener('click', function (e) {
+                e.preventDefault(); // verhindert Weiterleitung durch <a>
+                const carId = this.getAttribute('data-id');
+                fetch('/itp2025/ReCarNation-2/ITP/save_favorite.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ car_id: carId, user_id: userId }) 
+                })
+                .then(response => response.text())
+                .then(data => alert(data))
+                .catch(err => console.error("Fehler beim Speichern:", err));
+            });
 
             container.appendChild(card);
         });

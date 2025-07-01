@@ -23,14 +23,27 @@ session_start();
                 <li class="nav-item"><a class="nav-link" href="carsite.php">Autos</a></li>
                 <li class="nav-item"><a class="nav-link" href="impressum.php">Impressum</a></li>
                 <?php 
+                    
                     if (!isset($_SESSION['username'])) {
-                        echo ('<li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>');  
-                    }else{       
+                      // Nicht eingeloggt
+                       echo ('<li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>');  
+                    } else {
+                     // Eingeloggt
+                      if (isset($_SESSION['user']['roll']) && $_SESSION['user']['roll'] === 'admin') {
+                      // Admin
+                      echo ('<li class="nav-item"><a class="nav-link" href="admin_offers.php">Adminbereich</a></li>');
+                      echo ('<li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>');
+                      } else {
+                      // Normaler User
                         echo ('<li class="nav-item"><a class="nav-link" href="watchlist.php">Merkliste</a></li>');
                         echo ('<li class="nav-item"><a class="nav-link" href="profile.php">Profil</a></li>');
+                        echo ('<li class="nav-item"><a class="nav-link" href="sell-Site.php">Auto verkaufen</a></li>');
                         echo ('<li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>');
-                    }
-                    ?>
+                     }
+                   }
+                ?>
+
+                    
             </ul>
         </div>
     </div>

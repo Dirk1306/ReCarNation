@@ -21,6 +21,8 @@
     $gender       = trim($_POST['gender']);
     $birthdate    = $_POST['birthdate'];
     $password     = trim($_POST['password']); 
+    $roll = 'customer';
+
 
     // Validierung (kann erweitert werden)
     if (empty($username) || empty($email) || empty($password)) {
@@ -28,8 +30,11 @@
     }
 
     // SQL vorbereiten
-    $stmt = $db_obj->prepare("INSERT INTO user (Username, Firstname, Lastname, Email, Phonenumber, Gender, Birthdate, Password) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssssisss", $username, $firstname, $lastname, $email, $phonenumber, $gender, $birthdate, $password);
+    $stmt = $db_obj->prepare("INSERT INTO user 
+    (Username, Firstname, Lastname, Email, Phonenumber, Gender, Birthdate, Password, roll) 
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+
+    $stmt->bind_param("ssssissss", $username, $firstname, $lastname, $email, $phonenumber, $gender, $birthdate, $password, $roll);
 
     // Ausführen
     if ($stmt->execute()) {

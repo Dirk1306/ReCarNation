@@ -48,15 +48,22 @@ $stmt->execute();
 $result = $stmt->get_result();
 $user = $result->fetch_assoc();
 $stmt->close();
+
+// Nutzer-Angebote laden
+$offer_stmt = $db_obj->prepare("SELECT offerdetails, mileage, Priceoffer, date, status FROM offers WHERE User_id = ?");
+$offer_stmt->bind_param("i", $user_id);
+$offer_stmt->execute();
+$offer_result = $offer_stmt->get_result();
+$offers = $offer_result->fetch_all(MYSQLI_ASSOC);
+$offer_stmt->close();
+
 $db_obj->close();
-
-
 ?>
 
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ReCarnation – Profil</title>
   <!-- Bootstrap CSS -->
@@ -105,6 +112,35 @@ $db_obj->close();
     </div>
     <button type="submit" class="btn btn-primary">Speichern</button>
   </form>
+
+  <!-- Benutzerangebote anzeigen -->
+  <h3 class="mt-5">Meine Angebote</h3>
+  <?php if (!empty($offers)): ?>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Details</th>
+          <th>Kilometerstand</th>
+          <th>Preis</th>
+          <th>Datum</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php foreach ($offers as $offer): ?>
+          <tr>
+            <td><?= htmlspecialchars($offer['offerdetails']) ?></td>
+            <td><?= htmlspecialchars($offer['mileage']) ?> km</td>
+            <td><?= htmlspecialchars(number_format($offer['Priceoffer'], 2, ',', '.')) ?> €</td>
+            <td><?= htmlspecialchars($offer['date']) ?></td>
+            <td><?= htmlspecialchars($offer['status']) ?></td>
+          </tr>
+        <?php endforeach; ?>
+      </tbody>
+    </table>
+  <?php else: ?>
+    <p>Du hast noch keine Angebote erstellt.</p>
+  <?php endif; ?>
 </div>
 </body>
 </html>

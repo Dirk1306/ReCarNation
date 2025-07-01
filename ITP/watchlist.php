@@ -54,7 +54,7 @@ $result = $stmt->get_result();
                 <div class="col-md-4 mb-4">
                     <div class="card h-100">
                         <?php if (!empty($car['image'])): ?>
-                            <img src="<?= htmlspecialchars($car['image']) ?>" class="card-img-top" alt="Auto Bild">
+                            <img src="data:image/jpeg;base64,<?= base64_encode($car['image']) ?>" class="card-img-top" alt="<?= htmlspecialchars($car['Name']) ?>" style="object-fit:cover; height:200px;">
                         <?php endif; ?>
                         <div class="card-body">
                             <h5 class="card-title"><?= htmlspecialchars($car['Brand']) . ' ' . htmlspecialchars($car['Model']) ?></h5>
